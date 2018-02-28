@@ -100,7 +100,7 @@ function RetailCrowdsale(uint256 _startTime, uint256 _endTime, uint256 _rate, ad
 }
 
 function createTokenContract() internal returns (RetailToken) {
-return new RetailToken(msg.sender);
+return new RetailToken();
 }
 }
 
@@ -351,6 +351,20 @@ mintingFinished = true;
 MintFinished();
 return true;
 }
+}
+
+contract RetailToken is TokenDestructible, MintableToken {
+string public constant name = "RetailToken";
+string public constant symbol = "BRETT";
+uint8 public constant decimals = 18;
+
+uint256 public constant INITIAL_SUPPLY = 1500000000 * (10 ** uint256(decimals));
+/**
+ * @dev Constructor that gives msg.sender all of existing tokens.
+ */
+function RetailToken() public {
+totalSupply = INITIAL_SUPPLY;
+balances[msg.sender] = INITIAL_SUPPLY;
 }
 
 }
