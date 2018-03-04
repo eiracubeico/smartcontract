@@ -6,7 +6,7 @@ module.exports = function(deployer, network, accounts) {
 
 async function liveDeploy(deployer, accounts) {
   const BigNumber = web3.BigNumber;
-  const RATE = 0,0033;
+  const RATE = 0,000033;
   const startTime = 1525168800;
   const endTime =  1527674400;
   console.log([startTime, endTime, RATE, accounts[0]]);
